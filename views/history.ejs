@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<% layout('layout/page') -%>
+<% block('title', "История") -%>
+
+
+<link rel="stylesheet" type="text/css" href="/css/reformed.css" />
+<title>history</title>
+
+  <textarea id="history" disabled="disabled">
+
+  </textarea>
+
+<script type="text/javascript">
+
+$(document).ready(function(){              // по окончанию загрузки страницы
+    
+       $('#history')  .load("DAT/DAT"+"<%=user.get('_id')%>"+".json");               
+   
+}); 
+
+</script>
+</html>
+

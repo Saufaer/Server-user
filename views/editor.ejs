@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<% layout('layout/page') -%>
+<% block('title', "Редактирование") -%>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>editor</title>
+	
+</head>
+<body>
+
+
+
+<div class="left">
+				
+	<textarea id="input">
+{
+	"Название":"Показания счетчиков",
+	"квартира":"111",
+	"Ресурсы":[
+	{
+		"Ресурс":"Вода",
+		"показания счетчика":"4333"
+	},
+	{
+		"Ресурс":"Электричество",
+		"Тариф дневной":"3245",
+		"Тариф ночной":"123"
+	},
+	{
+		"Ресурс":"Газ",
+		"показания счетчика":"2354"
+	}
+	]
+}
+
+
+	</textarea>
+
+	<div class="buttons">
+				
+	
+	<input class="but" type="button" value="Создать форму" id="reformfordataentry" />
+	
+	
+	</div>
+</div>
+<div class="right">
+	<textarea id="output" disabled="disabled">
+
+	</textarea>
+
+	<div class="buttons">
+	<input class="but" type="button" value="Получить JSON и отправить на сервер" id="jsonthis" />
+	</div>
+</div>
+</div>
+
+<form id="reformed">
+
+</form>
+
+
+	<script type="text/javascript" src="./jquery.reformed.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {//внутри $( document ).ready(), будет работать только тогда, когда Объектная модель документа страницы (DOM) готова к выполнению кода JavaScript.
+		//использует jQuery для привязки функции к событию document.ready
+		//если вызвать (function () {...}, то объявляет и немедленно выполняет функцию.
+    // JSON loaders
+    //Чтобы получить элемент с помощью jQuery используются селекторы:
+   
+
+    // re:form-ers
+
+
+		$('#reformfordataentry').click(function() {//$('#reformfordataentry') – получение элемента с id=”reformfordataentry” (кнопка)
+			$('#reformed').reform($('#input').val(), {'editor':'data'});
+			//в форму с id=reformed вызвать функцию reform(свой плагин) установить значение (val) объекта с id=input (<textarea id="input">), т.е содержимого textarea
+			//с параметрами 'editor':'data' (для соответсвующей обработки в jquery.reformed.js)
+		});
+
+
+
+
+
+		$('#jsonthis').click(function() {//создать из формы json
+			$('#output').val($.rejson('#reformed'));//в <textarea id="output"> установить значение (val) , объекта rejson (из jquery.reformed.js) ,получаемое из формы <form id="reformed">
+			var dat = ($.rejson('#reformed'));
+		
+
+					var data = {};
+					data.title = "title";
+					data.message = "message";
+					
+					$.ajax({
+						type: 'POST',
+						data: dat,
+				        contentType: 'application/json',
+                        url: '/editor',						
+                        success: function(data) {
+                            console.log('success'); 
+
+                        }
+                    });
+
+
+
+		});
+
+	});
+	</script>
+</body>
+</html>

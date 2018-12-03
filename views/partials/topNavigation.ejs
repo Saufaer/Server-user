@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <ul>
+        <li><form action="/" method="get">
+  
+  <input class="but" type="submit" value="Главная"></form ></li>
+<% if (user) { %>
+    <li>
+     <form action="/editor" method="get">
+  
+  <input class="but" type="submit" value="Редактор"></form >
+</li>
+
+        <li> <form action="/history" method="get">
+  
+  <input class="but" type="submit" value="История"></form ></li>
+
+    <% } %>
+
+     <% if (user) { %>
+
+    <li> 
+      <form action="/logout" method="post"> 
+  <input class="but" type="submit" value="Выйти"></form >
+</li>
+    <% } else { %>
+       <li>
+        <form action="/login" method="get">  
+  <input class="but" type="submit" value="Авторизация"></form >
+</li>
+
+   <% } %>
+
+    </ul>
+
+
+
+
+</html>

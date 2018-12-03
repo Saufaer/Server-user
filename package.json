@@ -1,0 +1,21 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
+    "ejs": "^2.5.7",
+    "ejs-locals": "^1.0.2",
+    "express": "^3.3.8",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.0-rc1",
+    "nconf": "^0.10.0",
+    "socket.io": "^2.0.4",
+    "winston": "^2.4.0"
+  }
+}

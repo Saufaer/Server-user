@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>main</title>
+<% layout('layout/page') -%>
+
+ <% if (user) { %>
+
+<% block('title', ' Приветствую, '); -%>
+<h1>
+ <%=user.get('username')%>
+	
+
+</h1>
+
+ <% } else { %>
+
+
+<% block('title', 'Авторизуйтесь, чтобы начать работу'); -%>
+ <% } %>
+
+
+</html>
